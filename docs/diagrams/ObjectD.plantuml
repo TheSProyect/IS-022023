@@ -1,0 +1,57 @@
+@startuml Panamericanos
+object ":Juego" as J1{
+    localidad = Chile
+    Puntuacion = 21-19
+}
+object ":Equipo" as E1{
+    nombre = Venezuela
+    registro = 58
+}
+object ":Equipo" as E2{
+    nombre = Colombia
+    registro = 57
+}
+object ":Capitan" as C1{
+    telefono = 0414 1110011
+    nombre = Rodrigo 
+    direccion = Caracas
+    numero = 10
+    posicion = Bloqueador
+}
+object ":Capitan" as C2{
+    telefono = 0414 0001100
+    nombre = Alejandro
+    direccion = Bogota
+    numero = 11
+    posicion = Rematador
+}
+object ":Jugador" as P1{
+    telefono = 0414 9876543
+    nombre = Alfonso
+    direccion = Maracay
+    numero = 5
+    posicion = Armador
+}
+object ":Jugador" as P2{
+    telefono = 0414 1234567
+    nombre = Pedro
+    direccion = Medellin
+    numero = 22
+    posicion = Zaguero
+}
+object ":Entrenador" as T1{
+    telefono = 0414 9999999
+    nombre = Vladimir
+    direccion = Los Teques
+    años_experiencia = 11
+    nivel_acreditacion = Institucional
+}
+
+P1 -right-* E1
+P2 -right-* E2
+T1 -- E1
+C1 -left-* E1
+C2 -left-* E2
+E1 -- E2
+(E1,E2) .. J1
+@enduml
