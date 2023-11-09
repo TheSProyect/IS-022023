@@ -30,7 +30,7 @@ end note
 
 Sale -r-> List
 note on link
-    4: lineasVenta.añadir(new LineaVenta(espec, cant))
+    4: añadir(new LineaVenta(espec, cant))
 end note
 
 Sale --> SaleLine
