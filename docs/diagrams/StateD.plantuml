@@ -1,0 +1,28 @@
+state "ProductoEncargado" as state1 : 
+
+state "PedidoValidado" as state2
+state "EnvioUrgente" as state3
+state "EnvioOrdinario" as state4
+state state5 <<choice>>
+state "PedidoRealizado" as state6
+state "PedidoPagado" as state7
+
+
+[*]-->state1 : Encargar Producto
+
+state1-->state2 : Validar Pedido
+state7-->state7 : Cobrar Pago
+
+state2-->state7 : Pagar
+
+state7-->state5 : Obtener Producto
+
+state5-->state3 : [Urgente]
+state5-->state4 : [No urgente]
+
+state3-->state6 : Enviar urgente
+state4-->state6 : Enviar ordinario
+
+state6-->state6 : Dar cervezas a los transportistas
+state6-->state6 : Añadir Cliente a la lista satisfechos
+state6-->[*] : Enviar Recibo
