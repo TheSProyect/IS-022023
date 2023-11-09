@@ -1,0 +1,41 @@
+@startuml "Venta"
+
+skinparam noteBackgroundColor transparent
+skinparam noteBorderColor transparent
+hide members
+
+object ": Actor" as User
+object ": Registro" as Register
+object ": Venta" as Sale
+object ": CatalogoProductos" as Catalogue
+object ": Lineasventa" as SaleLines
+object ": List" as List
+object ": fechaHora" as Date
+
+User -r-> Register
+note on link
+    introducirArticulo()
+end note
+
+Register -d-> Catalogue
+note on link
+    0: Registro()
+end note
+
+
+Register -r-> Sale
+note on link
+    2: crearLineaVenta(espec, id) 
+end note
+
+Sale --> List
+note on link
+    3: añadir(new LineaVenta)
+end note
+
+List --> SaleLines
+note on link
+    3.1: new LineaVenta(espec, cant)
+end note
+
+@enduml
