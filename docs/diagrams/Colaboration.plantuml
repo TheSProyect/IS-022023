@@ -8,9 +8,9 @@ object ": Actor" as User
 object ": Registro" as Register
 object ": Venta" as Sale
 object ": CatalogoProductos" as Catalogue
-object ": Lineasventa" as SaleLines
+object ": Lineaventa" as SaleLine
 object ": List" as List
-object ": fechaHora" as Date
+
 
 User -r-> Register
 note on link
@@ -19,7 +19,7 @@ end note
 
 Register -d-> Catalogue
 note on link
-    0: Registro()
+    1: getEspecificacion(id)
 end note
 
 
@@ -28,14 +28,14 @@ note on link
     2: crearLineaVenta(espec, id) 
 end note
 
-Sale --> List
+Sale -r-> List
 note on link
-    3: añadir(new LineaVenta)
+    4: lineasVenta.añadir(new LineaVenta(espec, cant))
 end note
 
-List --> SaleLines
+Sale --> SaleLine
 note on link
-    3.1: new LineaVenta(espec, cant)
+    3: new ArrayList()
 end note
 
 @enduml
